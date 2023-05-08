@@ -54,7 +54,9 @@ namespace BLL.Services
 
                     token.Id = result1.Id;
                 }
-              
+
+                DataAccessFactory.TokenData().Update(token);
+
             }
             return null;
         }
