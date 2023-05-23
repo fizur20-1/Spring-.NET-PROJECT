@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <title>AngularJS Chart Example</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.9/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+</head>
+
+<body>
+  <div ng-controller="ChartController">
+    <canvas id="myChart" width="400" height="200"></canvas>
+  </div>
+
+  <script>
+    angular.module('myApp', [])
+      .controller('ChartController', function($scope) {
+        $scope.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+        $scope.data = [65, 59, 80, 81, 56, 55, 40];
+        $scope.options = {
+          responsive: true
+        };
+
+        // Create the chart
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: $scope.labels,
+            datasets: [{
+              label: 'Data',
+              data: $scope.data,
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: $scope.options
+        });
+      });
+  </script>
+</body>
+
+</html>

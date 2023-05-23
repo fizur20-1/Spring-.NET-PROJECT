@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script>
+		var app = angular.module("my-app",[]);
+		
+		app.factory('interceptor',[function(){
+			var interceptor = {
+				request:function(config){
+					config.headers.Authorization = localStorage.getItem("TKey");
+					//debugger;
+					return config;
+				},
+				response:function(response){
+					//debugger;
+					return response;
+				}
+			};
+			return interceptor;
+		}]);
+		
+		app.config(function($httpProvider){
+			$httpProvider.interceptors.push('interceptor');
+		});
+		
+		app.controller('loginCtrl',function($scope,$http){
+			$scope.login=function(){
+				var v = $scope.l;
+                debugger;
+				$http.post("https://localhost:44333/api/login",v).then(function(resp){
+					localStorage.setItem("TKey",resp.data.TKey);
+					//debugger;
+				},function(err){
+					//debugger;
+				});
+                
+				
+				
+			};
+		});
+
+		app.controller('adminCtrl',function($scope,$http){
+			$scope.load=function(){
+				//alert("OK");
+				//debugger;
+				$http.get("https://localhost:44333/api/admins/2").then(function(resp){
+					$scope.admin = resp.data;
+					//debugger;
+				},function(err){
+					$scope.msg = err.data.Msg;
+				});
+			};
+			
+		});
+        //adminAccessCtrl
+        app.controller('adminAccessCtrl',function($scope,$http){
+			$scope.access=function(){
+				//alert("OK");
+				debugger;
+				$http.get("https://localhost:44333/api/orders").then(function(resp){
+					$scope.adminAccess = resp.data;
+					debugger;
+				},function(err){
+					$scope.msg = err.data.Msg;
+				});
+			};
+			
+		});
+		
+	</script>
+	<body ng-app="my-app">
+		<div ng-controller="loginCtrl">
+			<form ng-submit="login()">
+				<input type="text" ng-model="l.Username" placeholder="Username"> <br>
+				<input type="password" ng-model="l.Password" placeholder = "Password"> <br>
+				<input type="submit">
+			</form>
+		</div>
+		
+		<div ng-controller="adminCtrl">
+			<h2>{{msg}}</h2>
+			<h1>Hello, {{admin.Name}} </h1><br>
+
+			<button ng-click="load()">Load<button>
+		</div>
+
+        <div ng-controller="adminAccess">
+            <ul>
+                
+                <li ng-repeat="c in Orders">Quantity: {{Orders.OrderQuantity}}-----Total Cost{{c.TotalCost}}</li>
+
+            </ul>
+
+            <button ng-click()="access()">Show Orders</button>
+        </div>
+	</body>
+</html>

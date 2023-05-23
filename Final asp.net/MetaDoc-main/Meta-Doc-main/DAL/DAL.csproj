@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{372E5778-89F3-4218-A377-A5EF16332EB5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccessFactory.cs" />
+    <Compile Include="Interfaces\IAdminLogin.cs" />
+    <Compile Include="Interfaces\IAuth.cs" />
+    <Compile Include="Interfaces\IDoctorLogin.cs" />
+    <Compile Include="Interfaces\IPatientLogin.cs" />
+    <Compile Include="Interfaces\IPharmacyLogin.cs" />
+    <Compile Include="Interfaces\IRepo.cs" />
+    <Compile Include="Migrations\202305011916322_initDB_withoutSeedingDoctorPatientPharmacy.cs" />
+    <Compile Include="Migrations\202305011916322_initDB_withoutSeedingDoctorPatientPharmacy.designer.cs">
+      <DependentUpon>202305011916322_initDB_withoutSeedingDoctorPatientPharmacy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305011936272_initDB_withSeedingDoctorPatientPharmacy.cs" />
+    <Compile Include="Migrations\202305011936272_initDB_withSeedingDoctorPatientPharmacy.designer.cs">
+      <DependentUpon>202305011936272_initDB_withSeedingDoctorPatientPharmacy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305011945159_initDB_withSeedingDoctorPatientPharmacy_V2.cs" />
+    <Compile Include="Migrations\202305011945159_initDB_withSeedingDoctorPatientPharmacy_V2.designer.cs">
+      <DependentUpon>202305011945159_initDB_withSeedingDoctorPatientPharmacy_V2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012134048_initDB_modifyToken.cs" />
+    <Compile Include="Migrations\202305012134048_initDB_modifyToken.designer.cs">
+      <DependentUpon>202305012134048_initDB_modifyToken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012203467_seedingReview.cs" />
+    <Compile Include="Migrations\202305012203467_seedingReview.designer.cs">
+      <DependentUpon>202305012203467_seedingReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012216442_seedingDiseaseSymptom.cs" />
+    <Compile Include="Migrations\202305012216442_seedingDiseaseSymptom.designer.cs">
+      <DependentUpon>202305012216442_seedingDiseaseSymptom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012241466_seedingPatientAppointment.cs" />
+    <Compile Include="Migrations\202305012241466_seedingPatientAppointment.designer.cs">
+      <DependentUpon>202305012241466_seedingPatientAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012255491_seedingPayments.cs" />
+    <Compile Include="Migrations\202305012255491_seedingPayments.designer.cs">
+      <DependentUpon>202305012255491_seedingPayments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012302227_seedingOrders.cs" />
+    <Compile Include="Migrations\202305012302227_seedingOrders.designer.cs">
+      <DependentUpon>202305012302227_seedingOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012319106_initDB_PharProduct.cs" />
+    <Compile Include="Migrations\202305012319106_initDB_PharProduct.designer.cs">
+      <DependentUpon>202305012319106_initDB_PharProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012331152_initDB_seeding_PharProductProductOrderDetails.cs" />
+    <Compile Include="Migrations\202305012331152_initDB_seeding_PharProductProductOrderDetails.designer.cs">
+      <DependentUpon>202305012331152_initDB_seeding_PharProductProductOrderDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012332354_seeding_PharProductProductOrderDetails.cs" />
+    <Compile Include="Migrations\202305012332354_seeding_PharProductProductOrderDetails.designer.cs">
+      <DependentUpon>202305012332354_seeding_PharProductProductOrderDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012333208_seeding_OrderDetails.cs" />
+    <Compile Include="Migrations\202305012333208_seeding_OrderDetails.designer.cs">
+      <DependentUpon>202305012333208_seeding_OrderDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012334091_seeding_PharProducts.cs" />
+    <Compile Include="Migrations\202305012334091_seeding_PharProducts.designer.cs">
+      <DependentUpon>202305012334091_seeding_PharProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012336241_initDB_PharProduct_v2.cs" />
+    <Compile Include="Migrations\202305012336241_initDB_PharProduct_v2.designer.cs">
+      <DependentUpon>202305012336241_initDB_PharProduct_v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012338004_seeding_PharProducts_v2.cs" />
+    <Compile Include="Migrations\202305012338004_seeding_PharProducts_v2.designer.cs">
+      <DependentUpon>202305012338004_seeding_PharProducts_v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305012340154_seeding_PharProducts_v3.cs" />
+    <Compile Include="Migrations\202305012340154_seeding_PharProducts_v3.designer.cs">
+      <DependentUpon>202305012340154_seeding_PharProducts_v3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305091922100_updatingChanges.cs" />
+    <Compile Include="Migrations\202305091922100_updatingChanges.designer.cs">
+      <DependentUpon>202305091922100_updatingChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305092005430_updatingAnnotation.cs" />
+    <Compile Include="Migrations\202305092005430_updatingAnnotation.designer.cs">
+      <DependentUpon>202305092005430_updatingAnnotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305100620445_seedingDoctorwith1memeber.cs" />
+    <Compile Include="Migrations\202305100620445_seedingDoctorwith1memeber.designer.cs">
+      <DependentUpon>202305100620445_seedingDoctorwith1memeber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305100628378_seedingagaindoctor1member.cs" />
+    <Compile Include="Migrations\202305100628378_seedingagaindoctor1member.designer.cs">
+      <DependentUpon>202305100628378_seedingagaindoctor1member.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305160503532_adminupdate.cs" />
+    <Compile Include="Migrations\202305160503532_adminupdate.designer.cs">
+      <DependentUpon>202305160503532_adminupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305160510041_anotherupdateadmin.cs" />
+    <Compile Include="Migrations\202305160510041_anotherupdateadmin.designer.cs">
+      <DependentUpon>202305160510041_anotherupdateadmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DiseaseSymptom.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\Patient.cs" />
+    <Compile Include="Models\PatientAppointment.cs" />
+    <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\PharProduct.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\Token.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Repos\AdminRepo.cs" />
+    <Compile Include="MetaDocContext.cs" />
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Doctor.cs" />
+    <Compile Include="Repos\DiseaseSymptomRepo.cs" />
+    <Compile Include="Repos\DoctorRepo.cs" />
+    <Compile Include="Models\Pharmacy.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\OrderDetailRepo.cs" />
+    <Compile Include="Repos\OrderRepo.cs" />
+    <Compile Include="Repos\PatientAppointmentRepo.cs" />
+    <Compile Include="Repos\PaymentRepo.cs" />
+    <Compile Include="Repos\PharmacyRepo.cs" />
+    <Compile Include="Repos\PharProductRepo.cs" />
+    <Compile Include="Repos\ProductRepo.cs" />
+    <Compile Include="Repos\Repo.cs" />
+    <Compile Include="Repos\PatientRepo.cs" />
+    <Compile Include="Repos\ReviewRepo.cs" />
+    <Compile Include="Repos\TokenRepo.cs" />
+    <Compile Include="Repos\UserRepo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202305011916322_initDB_withoutSeedingDoctorPatientPharmacy.resx">
+      <DependentUpon>202305011916322_initDB_withoutSeedingDoctorPatientPharmacy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305011936272_initDB_withSeedingDoctorPatientPharmacy.resx">
+      <DependentUpon>202305011936272_initDB_withSeedingDoctorPatientPharmacy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305011945159_initDB_withSeedingDoctorPatientPharmacy_V2.resx">
+      <DependentUpon>202305011945159_initDB_withSeedingDoctorPatientPharmacy_V2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012134048_initDB_modifyToken.resx">
+      <DependentUpon>202305012134048_initDB_modifyToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012203467_seedingReview.resx">
+      <DependentUpon>202305012203467_seedingReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012216442_seedingDiseaseSymptom.resx">
+      <DependentUpon>202305012216442_seedingDiseaseSymptom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012241466_seedingPatientAppointment.resx">
+      <DependentUpon>202305012241466_seedingPatientAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012255491_seedingPayments.resx">
+      <DependentUpon>202305012255491_seedingPayments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012302227_seedingOrders.resx">
+      <DependentUpon>202305012302227_seedingOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012319106_initDB_PharProduct.resx">
+      <DependentUpon>202305012319106_initDB_PharProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012331152_initDB_seeding_PharProductProductOrderDetails.resx">
+      <DependentUpon>202305012331152_initDB_seeding_PharProductProductOrderDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012332354_seeding_PharProductProductOrderDetails.resx">
+      <DependentUpon>202305012332354_seeding_PharProductProductOrderDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012333208_seeding_OrderDetails.resx">
+      <DependentUpon>202305012333208_seeding_OrderDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012334091_seeding_PharProducts.resx">
+      <DependentUpon>202305012334091_seeding_PharProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012336241_initDB_PharProduct_v2.resx">
+      <DependentUpon>202305012336241_initDB_PharProduct_v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012338004_seeding_PharProducts_v2.resx">
+      <DependentUpon>202305012338004_seeding_PharProducts_v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305012340154_seeding_PharProducts_v3.resx">
+      <DependentUpon>202305012340154_seeding_PharProducts_v3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305091922100_updatingChanges.resx">
+      <DependentUpon>202305091922100_updatingChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305092005430_updatingAnnotation.resx">
+      <DependentUpon>202305092005430_updatingAnnotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305100620445_seedingDoctorwith1memeber.resx">
+      <DependentUpon>202305100620445_seedingDoctorwith1memeber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305100628378_seedingagaindoctor1member.resx">
+      <DependentUpon>202305100628378_seedingagaindoctor1member.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305160503532_adminupdate.resx">
+      <DependentUpon>202305160503532_adminupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305160510041_anotherupdateadmin.resx">
+      <DependentUpon>202305160510041_anotherupdateadmin.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

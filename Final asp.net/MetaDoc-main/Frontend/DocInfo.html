@@ -1,0 +1,27 @@
+<!D OCTYPE html>
+<html lang="en-US">
+	<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"> </script>
+
+	<script>
+		var app = angular.module ("my-app",[]);
+		app.controller ('doctorCtrl', function($scope, $http) {
+			$http.get("https://localhost:44333/api/doctors").then(function(resp){
+			// debugger;
+				$scope.doctor = resp.data;
+			},
+			function(err){
+			debugger;
+			});
+		});
+	</script>
+
+	<body ng-app="my-app">
+		<div ng-controller="doctorCtrl">
+			<p>Doctor Name: {{doctor.Name}}</p>
+            <p>Doctor Email: {{doctor.Email}}</p>
+            <p>Doctor Contact: {{doctor.Contact}}</p>
+            <p>Doctor Degree: {{doctor.Degree}}</p>
+            <p>Doctor Chamber: {{doctor.Chamber}}</p>
+		</div>
+	</body>
+</html>
